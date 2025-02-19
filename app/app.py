@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from model.database import close_db
 from model.products_table import ProductsTable
 from model.categories_table import CategoriesTable
+from model.customers_table import CustomersTable
 
 
 app = Flask(__name__)
@@ -51,6 +52,17 @@ def category_list():
     """
     categories = CategoriesTable.get()
     return render_template("categories.jinja", categories=categories)
+
+
+@app.route("/customer")
+def customer_list():
+    """Returns a page listing all customers
+
+    Returns:
+        Response: the customer page
+    """
+    customers = CustomersTable.get()
+    return render_template("customers.jinja", customers=customers)
 
 
 @app.route("/order")

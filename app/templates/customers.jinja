@@ -1,0 +1,25 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<main>
+    <h2>Customers</h2>
+    <div class="scroll">
+        <!-- display a table of customers -->
+        {% if customers %}
+
+        <ol>
+            {% for customer in customers %}
+                <br><li>{{customer.LastName | upper}},
+                {{customer.PreferredName if customer.PreferredName else customer.FirstName | upper}}
+                <br>Email: {{customer.Email}}
+                <br>{% if customer.Phone %}Phone: {{ customer.Phone }}{% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+
+        {% else %}
+            <div> There are no customers.</div>
+        {% endif %}
+    </div> 
+</main>
+{% endblock %}
