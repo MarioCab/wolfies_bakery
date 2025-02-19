@@ -3,7 +3,6 @@
   overflow: auto;
 }
 
-head {
-  background: url(./icons/cake.ico);
-  display: block;
+.errorText {
+  color: red;
 }

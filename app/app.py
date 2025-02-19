@@ -38,10 +38,18 @@ def product_list():
         Response: the product page
     """
     products = ProductsTable.get()
-    return render_template(
-        "product_list.jinja",
-        products = products
-    )
+    return render_template("product_list.jinja", products=products)
+
+
+@app.route("/order")
+def orders():
+    """Returns a page listing all orders
+
+    Returns:
+        Response: the orders page
+    """
+    # orders = OrdersTable.get()
+    return render_template("orders.jinja")
 
 
 @app.teardown_appcontext
@@ -49,9 +57,19 @@ def close_connection(exception):
     """Closes the database connection
 
     Args:
-        exception (sqlite3.Error): The error raised if the close operation fails; 
+        exception (sqlite3.Error): The error raised if the close operation fails;
             Otherwise, None.
     """
     close_db()
 
-    
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    """Returns a 500 error message
+    Args:
+        error: 500 Internal Server Error
+
+    Returns:
+        Response: 500-error message page
+    """
+    return render_template("errors/500.jinja"), 500
