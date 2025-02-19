@@ -2,25 +2,21 @@
 
 {% block content %}
 <main>
-    <h2>Products</h2>
+    <h2>Categories</h2>
     <div class="scroll">
-        <!-- display a table of products -->
-        {% if products %}
+        <!-- display a table of categories -->
+        {% if categories %}
         <table class="table table-striped w-auto">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">Code</th>
                     <th scope="col">Name</th>
-                    <th scope="col" class="right">Price</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                {% for product in products %}
+                {% for category in categories %}
                 <tr>
-                    <td>{{ product.ProductCode }}</td>
-                    <td>{{ product.ProductName }}</td>
-                    <td class="right">{{ product.Price }}</td>
+                    <td>{{ category.CategoryName }}</td>
                     <td>
                         <form method="GET">
                             <input type="submit" value="Delete">
@@ -31,12 +27,12 @@
             </tbody>
         </table>
         {% else %}
-            <div> There are no products.</div>
+            <div> There are no categories.</div>
         {% endif %}
-    </div> 
-        <!-- link to the categories page -->
+    </div>   
+    <!-- link to the products page -->
     <div>
-        <a href="{{ url_for('category_list') }}">Manage Categories</a>
-    </div>  
+        <a href="{{ url_for('product_list') }}">View Products List</a>
+    </div>
 </main>
 {% endblock %}
