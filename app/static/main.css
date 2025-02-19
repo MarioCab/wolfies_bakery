@@ -1,0 +1,9 @@
+.scroll {
+  max-height: 300px;
+  overflow: auto;
+}
+
+head {
+  background: url(./icons/cake.ico);
+  display: block;
+}
