@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{ product.ProductCode }}</td>
                     <td>{{ product.ProductName }}</td>
-                    <td class="right">{{ product.Price }}</td>
+                    <td class="right">${{ "%.2f"|format(product.Price) }}</td>
                     <td>
                         <form method="GET">
                             <input type="submit" value="Delete">
